@@ -107,6 +107,10 @@ http://nodejs.cn/download/
         ```
   4. `npm run build` 
 
+## 创建SSH key [教程](https://blog.csdn.net/mqdxiaoxiao/article/details/92712143)
+  1. `ssh-keygen -t rsa -C "humster@foxmail.com"`
+  2. 进入 https://github.com/settings/keys 添加key
+  3. `ssh -T git@github.com`  //测试链接成功
 ## 关联git
   1. `git init`
   2. `git add README.md`
