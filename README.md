@@ -48,7 +48,7 @@ http://nodejs.cn/download/
             mode: "development",
             output: {
                 filename: "main.js",
-                path: path.resolve(__dirname, "dist"),
+                path: path.resolve(__dirname, "dist/static"),
             },
             module: {
                 rules: [
@@ -101,7 +101,7 @@ http://nodejs.cn/download/
             <title>Getting Started</title>
         </head>
         <body>
-            <script src="main.js"></script>
+            <script src="./static/main.js"></script>
         </body>
         </html>
         ```
@@ -111,9 +111,41 @@ http://nodejs.cn/download/
   1. `ssh-keygen -t rsa -C "humster@foxmail.com"`
   2. 进入 https://github.com/settings/keys 添加key
   3. `ssh -T git@github.com`  //测试链接成功
+
 ## 关联git
   1. `git init`
   2. `git add README.md`
   3. `git commit -m "first commit"`
   4. `git remote add origin git@github.com:ldoll/ldollTop.git`
   5. `git push -u origin master`
+
+## 安装webpack-dev-server
+  1.  `npm i webpack-dev-server -D`
+  2. 修改webpack.config.js
+      ```
+      devServer: {
+          contentBase: path.join(__dirname, "dist"),
+          open: true,
+          openPage: "tt.html",
+          compress: true,
+          port: 80,
+          publicPath: "/static/",
+          host: "www.ldoll.com",
+          historyApiFallback: true,
+          proxy: {
+              "/api": {
+                target: "http://www.ldoll.com:3000",
+                pathRewrite: {"^/api" : ""}
+              }
+            }
+      }
+      ```
+  3. 修改计算机host文件 (system32/drives/etc)
+      ```
+      127.0.0.1 www.ldoll.com
+      ```
+  3. 修改package.json,在"scripts"里添加
+      ```
+      "start": "webpack-dev-server ./src/tt.js"
+      ```
+  4. `npm run start`

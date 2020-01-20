@@ -7,7 +7,8 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "build": "webpack ./src/tt.js"
+    "build": "webpack ./src/tt.js",
+    "start": "webpack-dev-server ./src/tt.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -53,6 +54,7 @@
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-standard": "^4.0.1",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
   }
 }
